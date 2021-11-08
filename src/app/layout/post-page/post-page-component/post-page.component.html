@@ -1,0 +1,103 @@
+<div class="container-fluid">
+  <div class="be-comment-block">
+    <div class="row">
+      <div class="col-md-12">
+        <div>
+          <span class="be-comment-name ">
+            <h1 class="d-inline">Post Title</h1> <span class="px-4">by <a href="javascript:void(0)">Ravi Sah</a></span>
+          </span>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <p>
+          <rating class="px-3" [(ngModel)]="postVar.postRating" [max]="5" [readonly]="true"></rating>
+        </p>
+      </div>
+      <div class="col-md-6 text-end">
+        <span class="be-comment-time">
+          <i class="fa fa-clock-o"></i>
+          <!-- 'May 27, 2015 at 3:14am' -->
+          {{secondsToDHMS(2313)}}
+        </span>
+      </div>
+      <div class="col-md-12">
+        <p class="be-comment-text">
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+          standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
+          make
+          a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+          remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
+          containing
+          Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including
+          versions
+          of Lorem Ipsum.
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <h1 class="comments-title">Comments ({{postVar.commentsArr.length}})</h1>
+      </div>
+      <div class="col-md-6">
+        <span class="px-4">
+          5k <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+        </span>
+        <span class="px-4">
+          250 <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
+        </span>
+      </div>
+    </div>
+    <h1 class="comments-title">last ({{postVar.pagedItems.length}}) Comments </h1>
+    <div class="">
+
+      <div class="be-comment" *ngFor="let comment of postVar.pagedItems">
+        <div class="be-img-comment">
+          <a href="javascript:void(0)">
+            <img [src]="comment.img" alt="" class="be-ava-comment">
+          </a>
+        </div>
+        <div class="be-comment-content">
+
+          <span class="be-comment-name">
+            <a href="javascript:void(0)">{{comment.name}}</a>
+            <rating class="px-3" [(ngModel)]="comment.rating" [max]="5" [readonly]="false"></rating>
+          </span>
+          <span class="be-comment-time">
+            <i class="fa fa-clock-o"></i>
+            {{comment.duration}}
+          </span>
+
+          <p class="be-comment-text">
+            {{comment.comment}}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="text-center">
+      <a href="javascript:void(0)" (click)="showMoreComment()" class="lead "
+        [hidden]="postVar.pagedItems.length === postVar.commentsArr.length">Load more</a>
+    </div>
+    <!-- <form class="form-block">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6">
+          <div class="form-group fl_icon">
+            <div class="icon"><i class="fa fa-user"></i></div>
+            <input class="form-input" type="text" placeholder="Your name">
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 fl_icon">
+          <div class="form-group fl_icon">
+            <div class="icon"><i class="fa fa-envelope-o"></i></div>
+            <input class="form-input" type="text" placeholder="Your email">
+          </div>
+        </div>
+        <div class="col-xs-12">
+          <div class="form-group">
+            <textarea class="form-input" required="" placeholder="Your text"></textarea>
+          </div>
+        </div>
+        <a class="btn btn-primary pull-right">submit</a>
+      </div>
+    </form> -->
+  </div>
+</div>
